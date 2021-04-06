@@ -1,46 +1,75 @@
-<template @onload="changePlaceholder">
-  <div class="flex justify-center">
-    <form action="" @submit.prevent="onSubmit" class="max-w-md">
-      <div>
-        <label for="name">Device</label>
+<template>
+  <div class="grid place-items-center">
+    <form action="" @submit.prevent="onSubmit" class=" min-w-1/4 mt-8">
+      <label for="name">Device</label>
+      <div class="relative mb-3">
         <input
-          class="py-2 pl-4 my-1.5  border-solid border-2 border-gray-300 sm:text-sm w-full focus:ring-2 focus:ring-green-300 focus:border-indigo-500 rounded-md"
+          class="relative py-2 pl-4 my-1.5  border-solid border-2 border-gray-300 sm:text-sm w-full focus:ring-2 focus:ring-green-300 focus:border-indigo-500 rounded-md"
           type="text"
           name="device"
           placeholder="Device"
           v-model="devices.device"
           required
         />
+        <span
+          class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-4"
+        >
+          <img src="../assets/microwave.png" />
+        </span>
+      </div>
 
-        <label for="name">Buying Price</label>
+      <label for="name">Buying Price</label>
+      <div class="relative mb-3">
         <input
-          class="py-2 pl-4 my-1.5 border-solid border-2 border-gray-300 sm:text-sm w-full focus:ring-2 focus:ring-green-300 focus:border-indigo-500 rounded-md"
-          type="text"
+          class=" relative py-2 pl-4 my-1.5 border-solid border-2 border-gray-300 sm:text-sm w-full focus:ring-2 focus:ring-green-300 focus:border-indigo-500 rounded-md"
+          type="number"
+          min="0"
           name="buying__price"
           placeholder="Buying Price"
           v-model="devices.buyingPrice"
           required
         />
+        <span
+          class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-4"
+        >
+          <img src="../assets/money-bag.png" />
+        </span>
+      </div>
 
-        <label for="name">Average Lifespan</label>
+      <label for="name">Average Lifespan</label>
+      <div class="relative mb-3">
         <input
-          class="py-2 pl-4 my-1.5 border-solid border-2 border-gray-300 sm:text-sm w-full focus:ring-2 focus:ring-green-300 focus:border-indigo-500 rounded-md"
-          type="text"
+          class=" relative py-2 pl-4 my-1.5 border-solid border-2 border-gray-300 sm:text-sm w-full focus:ring-2 focus:ring-green-300 focus:border-indigo-500 rounded-md"
+          type="number"
+          min="0"
           name="average__lifespan"
           placeholder="Average lifespan"
           v-model="devices.averageLifespan"
           required
         />
+        <span
+          class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-4"
+        >
+          <img src="../assets/stopwatch.png" />
+        </span>
+      </div>
 
-        <label for="name">Years in Use</label>
+      <label for="name">Years in Use</label>
+      <div class="relative mb-3">
         <input
           class="py-2 pl-4 my-1.5 border-solid border-2 border-gray-300 sm:text-sm w-full focus:ring-2 focus:ring-green-300 focus:border-indigo-500 rounded-md"
-          type="text"
+          type="number"
+          min="0"
           name="years__in__use"
           placeholder="Years in Use"
           v-model="devices.yearsInUse"
           required
         />
+        <span
+          class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-4"
+        >
+          <img src="../assets/stopwatch.png" />
+        </span>
       </div>
 
       <button
@@ -87,8 +116,19 @@ export default {
       });
 
       //takes from back to initial state
-      this.$store.state.inputValue = [];
+      this.devices = [];
     },
   },
 };
 </script>
+
+<style lang="postcss">
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+</style>

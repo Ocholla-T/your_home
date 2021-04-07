@@ -27,6 +27,10 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       teal: colors.teal,
+
+      // custom colors
+      primary: "F1F1F1",
+      secondary: "#f6c065",
     },
     spacing: {
       px: "1px",

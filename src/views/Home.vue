@@ -1,5 +1,6 @@
 <template>
-  <div class="grid place-items-center">
+  <Navbar />
+  <div class="bg-primary grid place-items-center">
     <form action="" @submit.prevent="onSubmit" class=" min-w-1/4 mt-8">
       <label for="name">Device</label>
       <div class="relative mb-3">
@@ -7,7 +8,7 @@
           class="relative py-2 pl-4 my-1.5  border-solid border-2 border-gray-300 sm:text-sm w-full focus:ring-2 focus:ring-green-300 focus:border-indigo-500 rounded-md"
           type="text"
           name="device"
-          placeholder="Device"
+          placeholder="Enter your device"
           v-model="devices.device"
           required
         />
@@ -25,7 +26,7 @@
           type="number"
           min="0"
           name="buying__price"
-          placeholder="Buying Price"
+          placeholder="Number required"
           v-model="devices.buyingPrice"
           required
         />
@@ -43,7 +44,7 @@
           type="number"
           min="0"
           name="average__lifespan"
-          placeholder="Average lifespan"
+          placeholder="Number required"
           v-model="devices.averageLifespan"
           required
         />
@@ -61,7 +62,7 @@
           type="number"
           min="0"
           name="years__in__use"
-          placeholder="Years in Use"
+          placeholder="Number required"
           v-model="devices.yearsInUse"
           required
         />
@@ -84,10 +85,13 @@
 
 <script>
 import { devicesCollection } from "@/firebase";
+import Navbar from "@/components/Navbar";
 
 export default {
   name: "Home",
-  components: {},
+  components: {
+    Navbar,
+  },
   data() {
     return {
       devices: [

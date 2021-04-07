@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <div class="bg-primary grid place-items-center">
+  <main class="bg-primary grid place-items-center">
     <form action="" @submit.prevent="onSubmit" class=" min-w-1/4 mt-8">
       <label for="name">Device</label>
       <div class="relative mb-3">
@@ -80,17 +80,20 @@
         Submit
       </button>
     </form>
-  </div>
+  </main>
+  <OutputTable />
 </template>
 
 <script>
 import { devicesCollection } from "@/firebase";
 import Navbar from "@/components/Navbar";
+import OutputTable from "@/components/OutputTable";
 
 export default {
   name: "Home",
   components: {
     Navbar,
+    OutputTable,
   },
   data() {
     return {

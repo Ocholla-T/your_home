@@ -30,7 +30,8 @@ module.exports = {
 
       // custom colors
       primary: "F1F1F1",
-      secondary: "#f6c065",
+      secondary: "#F6C065",
+      table__header: "#008891",
     },
     spacing: {
       px: "1px",

@@ -1,43 +1,46 @@
 .<template>
-  <section class="flex justify-center mt-8 mb-10">
+  <section class="flex justify-center p-8">
     <table>
       <thead>
         <tr>
           <th
-            class="px-10 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider"
+            class="px-10 py-3 border-b-2 border-secondary text-left leading-4 text-blue-500 tracking-wider"
           >
             Device
           </th>
           <th
-            class="px-10 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider"
+            class="px-10 py-3 border-b-2 border-secondary text-left leading-4 text-blue-500 tracking-wider"
           >
             Price
           </th>
           <th
-            class="px-10 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider"
+            class="px-10 py-3 border-b-2 border-secondary text-left leading-4 text-blue-500 tracking-wider"
           >
             Lifespan
           </th>
           <th
-            class="px-10 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider"
+            class="px-10 py-3 border-b-2 border-secondary text-left leading-4 text-blue-500 tracking-wider"
           >
             Years Used
           </th>
         </tr>
       </thead>
+
       <tbody>
-        <tr>
-          <td class="px-10 py-4 whitespace-no-wrap border-b border-gray-500">
-            <div class="text-sm leading-5 text-blue-900">hello</div>
+        <tr v-for="device in myDevicesInformation" :key="device.id">
+          <td class="px-10 py-4 whitespace-no-wrap border-b-2 border-teal-500">
+            <div class="text-sm leading-5 ">{{ device.device }}</div>
           </td>
-          <td class="px-10 py-4 whitespace-no-wrap border-b border-gray-500">
-            <div class="text-sm leading-5 text-blue-900">from</div>
+          <td class="px-10 py-4 whitespace-no-wrap border-b-2 border-teal-500">
+            <div class="text-sm leading-5 ">
+              {{ device.buyingPrice }}
+            </div>
           </td>
-          <td class="px-10 py-4 whitespace-no-wrap border-b border-gray-500">
-            <div class="text-sm leading-5 text-blue-900">other</div>
+          <td class="px-10 py-4 whitespace-no-wrap border-b-2 border-teal-500">
+            <div class="text-sm leading-5 ">{{ device.lifespan }}</div>
           </td>
-          <td class="px-10 py-4 whitespace-no-wrap border-b border-gray-500">
-            <div class="text-sm leading-5 text-blue-900">side</div>
+          <td class="px-10 py-4 whitespace-no-wrap border-b-2 border-teal-500">
+            <div class="text-sm leading-5 ">{{ device.yearsUsed }}</div>
           </td>
         </tr>
       </tbody>
@@ -46,7 +49,35 @@
 </template>
 
 <script>
-export default {};
+import { devicesCollection } from "@/firebase";
+
+export default {
+  name: "OutputTable",
+  data() {
+    return {
+      myDevicesInformation: [],
+    };
+  },
+  created() {
+    devicesCollection.onSnapshot((res) => {
+      const changes = res.docChanges();
+
+      changes.forEach((change) => {
+        if (change.type === "added") {
+          this.myDevicesInformation.push({
+            device: change.doc.data().device,
+            buyingPrice: change.doc.data().buyingPrice,
+            lifespan: change.doc.data().averageLifespan,
+            yearsUsed: change.doc.data().yearsInUse,
+            id: change.doc.id,
+          });
+
+          console.log(this.myDevicesInformation);
+        }
+      });
+    });
+  },
+};
 </script>
 
 <style></style>

@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <main class="bg-primary grid place-items-center">
-    <form action="" @submit.prevent="onSubmit" class=" min-w-1/4 mt-8">
+    <form action="" @submit.prevent="onSubmit" class=" min-w-1/4 mt-10">
       <label for="name">Device</label>
       <div class="relative mb-3">
         <input
@@ -80,11 +80,14 @@
         Submit
       </button>
     </form>
+    <ArrowDownIcon class="mt-10 mb-5 h-8 w-8 text-teal-800 animate-bounce" />
   </main>
+
   <OutputTable />
 </template>
 
 <script>
+import { ArrowDownIcon } from "@heroicons/vue/outline";
 import { devicesCollection } from "@/firebase";
 import Navbar from "@/components/Navbar";
 import OutputTable from "@/components/OutputTable";
@@ -94,6 +97,7 @@ export default {
   components: {
     Navbar,
     OutputTable,
+    ArrowDownIcon,
   },
   data() {
     return {
@@ -118,9 +122,14 @@ export default {
       };
 
       //firebase accepts data as objects
-      devicesCollection.add(devices).then(() => {
-        console.log("added to database!");
-      });
+      devicesCollection
+        .add(devices)
+        .then(() => {
+          console.log("added to database!");
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
 
       //takes from back to initial state
       this.devices = [];

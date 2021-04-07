@@ -9,7 +9,7 @@
 
     <aside
       v-if="isHidden"
-      class="z-0 absolute right-8 top-2 w-auto pt-12 pb-8 px-8  text-right bg-teal-200 rounded"
+      class="z-0 absolute right-8 top-2 w-auto pt-12 pb-8 px-8  text-right bg-teal-400 rounded"
     >
       <ul class="grid grid-rows-2 gap-2 mt-4">
         <li>Account Settings</li>

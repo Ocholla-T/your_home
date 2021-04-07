@@ -122,14 +122,9 @@ export default {
       };
 
       //firebase accepts data as objects
-      devicesCollection
-        .add(devices)
-        .then(() => {
-          console.log("added to database!");
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
+      devicesCollection.add(devices).catch((error) => {
+        console.log(error.message);
+      });
 
       //takes from back to initial state
       this.devices = [];

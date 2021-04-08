@@ -43,6 +43,16 @@
             <div class="text-sm leading-5 ">{{ device.yearsUsed }}</div>
           </td>
         </tr>
+        <tr>
+          <th
+            class="px-10 py-3 border-b-2 border-secondary text-left leading-5 text-blue-500 tracking-wider"
+          >
+            Total
+          </th>
+          <td class="px-10 py-4 whitespace-no-wrap border-b-2 border-teal-500">
+            <div class="text-sm leading-5 ">{{ totalValueOfDevices }}</div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -57,6 +67,15 @@ export default {
     return {
       myDevicesInformation: [],
     };
+  },
+  computed: {
+    totalValueOfDevices: function() {
+      var total = 0;
+      this.myDevicesInformation.forEach((element) => {
+        total += Number(element.buyingPrice);
+      });
+      return total;
+    },
   },
   created() {
     devicesCollection.onSnapshot((res) => {

@@ -59,10 +59,10 @@
 </template>
 
 <script>
-import { devicesCollection } from "@/firebase";
+import { devicesCollection } from '@/firebase';
 
 export default {
-  name: "OutputTable",
+  name: 'OutputTable',
   data() {
     return {
       myDevicesInformation: [],
@@ -82,7 +82,7 @@ export default {
       const changes = res.docChanges();
 
       changes.forEach((change) => {
-        if (change.type === "added") {
+        if (change.type === 'added') {
           this.myDevicesInformation.push({
             device: change.doc.data().device,
             buyingPrice: change.doc.data().buyingPrice,

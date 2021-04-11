@@ -2,4 +2,12 @@
 
 @tailwind components;
 
+.button_teal {
+  @apply w-full my-3 mr-1 mb-1 px-12 py-3 bg-teal-500 text-white hover:bg-teal-600 font-bold uppercase text-sm  rounded shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150;
+}
+
+.input_common {
+  @apply py-2 pl-4 my-1.5  border-solid border-2 border-gray-300 sm:text-sm w-full focus:ring-1 focus:ring-input_active focus:border-input_active rounded-md;
+}
+
 @tailwind utilities;

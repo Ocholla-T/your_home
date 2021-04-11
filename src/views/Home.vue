@@ -13,7 +13,7 @@
           required
         />
         <span
-          class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-4"
+          class="absolute z-10 h-full leading-snug font-normal  text-center text-blueGray-300 bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-4"
         >
           <img src="../assets/microwave.png" />
         </span>
@@ -31,7 +31,7 @@
           required
         />
         <span
-          class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-4"
+          class="absolute z-10 h-full leading-snug font-normal  text-center text-blueGray-300 bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-4"
         >
           <img src="../assets/money-bag.png" />
         </span>
@@ -73,10 +73,7 @@
         </span>
       </div>
 
-      <button
-        class="w-full my-3 mr-1 mb-1 px-12 py-3 bg-teal-500 text-white active:bg-teal-600 font-bold uppercase text-sm  rounded shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
-        type="submit"
-      >
+      <button class="button_teal" type="submit">
         Submit
       </button>
     </form>

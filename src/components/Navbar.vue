@@ -3,7 +3,7 @@
     <nav class="py-5 px-16 bg-secondary font-serif text-lg">
       <ul class="flex justify-between">
         <li>Your Home</li>
-        <img @click="toggle__menu" class="relative z-10" src="../assets/user.png" alt="user icon" />
+        <img @click="toggleMenu" class="relative z-10" src="../assets/user.png" alt="user icon" />
       </ul>
     </nav>
 
@@ -13,13 +13,15 @@
     >
       <ul class="grid grid-rows-2 gap-2 mt-4">
         <li>Account Settings</li>
-        <li>Log out</li>
+        <li @click="logout">Log out</li>
       </ul>
     </aside>
   </header>
 </template>
 
 <script>
+import { auth } from '@/firebase';
+
 export default {
   name: 'Navbar',
   data() {
@@ -28,8 +30,18 @@ export default {
     };
   },
   methods: {
-    toggle__menu: function() {
+    toggleMenu: function() {
       return (this.isHidden = !this.isHidden);
+    },
+    logout: function() {
+      auth
+        .signOut()
+        .then(() => {
+          this.$router.push('/login');
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
     },
   },
 };

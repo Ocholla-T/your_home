@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/auth';
 
 var firebaseConfig = {
   apiKey: 'AIzaSyCUbY7PjqBAXLyilfMsb4_d2Gw1xDyUpBg',
@@ -15,4 +16,5 @@ firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
+export const auth = firebase.auth();
 export const devicesCollection = db.collection('devices');

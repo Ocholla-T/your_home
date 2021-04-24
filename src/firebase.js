@@ -1,14 +1,15 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+require('dotenv').config;
 
 var firebaseConfig = {
-  apiKey: 'AIzaSyCUbY7PjqBAXLyilfMsb4_d2Gw1xDyUpBg',
-  authDomain: 'your-home-77581.firebaseapp.com',
-  projectId: 'your-home-77581',
-  storageBucket: 'your-home-77581.appspot.com',
-  messagingSenderId: '1026192543745',
-  appId: '1:1026192543745:web:a513f0d4b6f7c3da2c3000',
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
 };
 
 // Initialize Firebase
